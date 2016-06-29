@@ -1,0 +1,109 @@
+<!-- Imports polymer -->
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-media-query/iron-media-query.html">
+<!-- Defines element markup -->
+<dom-module id="vcard-download-cv">
+    <template>
+        <style>
+        .download-cv-background {
+            background: url(images/bg-img.jpg) no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -ms-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding: 0;
+        }
+        
+        .download-cv-background {
+            text-align: center;
+        }
+        
+        .white-layer {
+            background: rgba(255, 255, 255, .9);
+            width: 100%;
+            height: 100%;
+        }
+        
+        .download-cv-background p {
+            margin-bottom: 20px;
+            color: #141414;
+            font-size: 18px;
+        }
+        
+        .download-cv-background a,
+        .download-cv-background p {
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        p {
+            margin: 0;
+        }
+        
+        .download-cv-background a {
+            display: inline-block;
+            background: #141414;
+            padding: 15px 30px;
+            color: #fff;
+            font-size: 12px;
+        }
+        
+        .download-cv-background a {
+            -webkit-transition: linear .2s;
+            -moz-transition: linear .2s;
+            -o-transition: linear .2s;
+            transition: linear .2s;
+        }
+        
+        .middle-content[media-query-768] {
+            position: relative;
+            top: 50%;
+            -webkit-transform: translate(0, -50%);
+            -moz-transform: translate(0, -50%);
+            -ms-transform: translate(0, -50%);
+            -o-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+        }
+        .download-cv-background[media-query-767] {
+            background-attachment: scroll;
+            background-position: top center!important;
+        }
+        .white-layer[media-query-767] {
+            padding: 80px 20px;
+        }
+        </style>
+        <iron-media-query query="(min-width: 768px)" query-matches="{{mediaQuery768}}"></iron-media-query>
+        <iron-media-query query="(max-width: 767px)" query-matches="{{mediaQuery767}}"></iron-media-query>
+        <div class="download-cv-background col-xs-12 col-sm-6" data-mh$="{{matchHeight}}" media-query-767$="{{mediaQuery767}}">
+            <div class="white-layer" media-query-767$="{{mediaQuery767}}">
+                <div class="middle-content" media-query-768$="{{mediaQuery768}}">
+                    <p>Descargar CV</p>
+                    <a href="#" on-tap="handleTap"><i class="fa fa-download fa-lg" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </template>
+</dom-module>
+<!-- Registers custom element -->
+<script>
+Polymer({
+    is: 'vcard-download-cv', //Registramos el nombre del componente
+    properties: { //Propiedades del componente
+        downloadUrl: {
+            type: String,
+            value: 'https://dl.dropboxusercontent.com/u/48445069/CurriculumVitae.pdf'
+        },
+        matchHeight: {
+            type: String,
+            value: 'vcard-download-cv'
+        }
+    },
+    handleTap: function (e) {
+        e.preventDefault();
+        var win = window.open(this.downloadUrl, '_blank');
+        win.focus();
+    }
+});
+</script>

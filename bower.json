@@ -1,0 +1,24 @@
+{
+  "name": "vcard-download-cv",
+  "version": "0.0.1",
+  "description": "Download CV",
+  "private": true,
+  "authors": [
+    "YCLIN"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "vcard"
+  ],
+  "main": "vcard-download-cv.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ylinlee/vcard-download-cv.git"
+  },
+  "license": "MIT",
+  "ignore": [],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.4.0"
+  }
+}
